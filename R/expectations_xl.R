@@ -19,7 +19,7 @@
 #' \dQuote{unified} as fallback if no such option is set
 #' @param format \code{[character]} Comparison mode passed to \code{diffPrint},
 #' defaults to to using the \dQuote{diffobj.format} global option value with
-#' \dQuote{raw} as fallback if no such option is set
+#' \dQuote{ansi256} as fallback if no such option is set
 #' @param ... Passed to \code{all.equal} and returned as a test attributes
 #'
 #' @return A \code{\link{tinytest}} object. A tinytest object is a
@@ -54,7 +54,7 @@ expect_identical_xl <- function(current, target, useDiffObj = TRUE, info = NA_ch
                                 format = getOption("diffobj.format", "ansi256"),
                                 ...) {
     # Run tinytest unittest
-    tt_res <- tinytest::expect_equivalent(current = current, target = target, info = info)
+    tt_res <- tinytest::expect_identical(current = current, target = target, info = info)
 
     # Add custom object diff (if requested)
     if (useDiffObj)
